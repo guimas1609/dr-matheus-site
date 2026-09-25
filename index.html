@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr. Matheus César, Cirurgião-Dentista</title>
+<meta name="description" content="Dr. Matheus César — cirurgião-dentista. Transformo seu sorriso com naturalidade em porcelana.">
+<link rel="icon" type="image/png" href="assets/matheus-editado.png?v=3">
+<link rel="apple-touch-icon" href="assets/matheus-editado.png?v=3">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* nomes legados (green/gold) mantidos p/ compatibilidade — paleta agora é nude/bege */
+    --green-950:#10263D;   /* azul-marinho profundo — header, footer, painéis escuros */
+    --green-800:#173C60;   /* azul petróleo — meio dos gradientes escuros */
+    --green-600:#2478B8;   /* azul médio — labels e títulos em degradê */
+    --gold-500:#1687D9;    /* azul principal — botões, bordas e acentos */
+    --gold-300:#8CCBFF;    /* azul claro — detalhes sobre fundo escuro */
+    --sand-100:#EFE6D9;    /* areia — variação sutil de seção */
+    --cream-50:#F6F1EA;    /* creme — fundo geral */
+    --ink-900:#2E241D;     /* café escuro — texto */
+    --white:#FFFFFF;
+    --line-on-dark: rgba(140,203,255,0.22);
+    --line-on-light: rgba(46,36,29,0.14);
+    --gold-grad: linear-gradient(135deg, #8CCBFF 0%, #1687D9 48%, #0D5FA3 100%);
+    --cursor-tooth: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='26'%20height='30'%20viewBox='0%200%2032%2040'%3E%3Cpath%20d='M16%202C9%202%204%206%204%2014c0%206%202%2010%203%2016%20.6%204%202%208%204%208s2.5-4%203-8c.3-3%201-4%202-4s1.7%201%202%204c.5%204%201%208%203%208s3.4-4%204-8c1-6%203-10%203-16%200-8-5-12-12-12z'%20fill='%23ffffff'%20stroke='%232E241D'%20stroke-width='2.4'%20stroke-linejoin='round'/%3E%3C/svg%3E") 12 3;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+  html,body{overflow-x:clip;}
+
+  body{
+    font-family:'Hanken Grotesk',system-ui,-apple-system,sans-serif;
+    color:var(--ink-900);
+    background:var(--cream-50);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  h1,h2,h3,.serif{
+    font-family:'Bricolage Grotesque',system-ui,sans-serif;
+    font-weight:600;
+    letter-spacing:-0.022em;
+    line-height:1.08;
+  }
+
+  a{color:inherit;text-decoration:none;}
+
+  img,svg{display:block;max-width:100%;}
+
+  .container{
+    max-width:1120px;
+    margin:0 auto;
+    padding:0 28px;
+  }
+
+  /* ---------- Header ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    /* fundo SÓLIDO de propósito: backdrop-filter cria emendas verticais de tiles
+       na GPU do Chrome (pior com escala de tela != 100%). Sem filtro = sem linhas. */
+    background:#10263D;
+    border-bottom:1px solid rgba(140,203,255,0.16);
+    box-shadow:0 10px 30px -14px rgba(37,30,23,0.45),
+               inset 0 -1px 0 rgba(140,203,255,0.05);
+  }
+  .nav-row{
+    display:flex; align-items:center; justify-content:space-between;
+    gap:20px;
+    padding:16px 28px;
+    color:var(--cream-50);
+  }
+  .brand{
+    display:flex; align-items:center; gap:12px;
+    font-family:'Bricolage Grotesque',system-ui,sans-serif; font-size:1.3rem; font-weight:700;
+    letter-spacing:-0.01em; color:var(--cream-50);
+    flex:none;
+  }
+  .brand-mark{
+    width:38px; height:38px; border-radius:50%; flex:none;
+    border:1px solid var(--gold-500);
+    background:var(--cream-50) url("assets/matheus-editado.png?v=3") 40% 22% / 175% no-repeat;
+  }
+  .brand-short{display:none;}
+  nav ul{
+    display:flex; gap:32px; list-style:none;
+  }
+  nav a{
+    font-size:0.92rem; color:var(--cream-50); opacity:0.85;
+    border-bottom:1px solid transparent; padding-bottom:4px;
+    transition:opacity 0.2s ease, border-color 0.2s ease;
+  }
+  nav a:hover{opacity:1; border-color:var(--gold-500);}
+  .btn{
+    position:relative;
+    display:inline-flex; align-items:center; justify-content:center;
+    font-family:'Hanken Grotesk',system-ui,sans-serif;
+    font-size:0.92rem; font-weight:700; letter-spacing:0.015em;
+    padding:13px 30px;
+    border:2px solid var(--gold-500); color:var(--gold-500);
+    background:transparent; border-radius:10px;
+    transition:background .3s ease, color .3s ease, box-shadow .3s ease, transform .3s ease;
+    white-space:nowrap;
+  }
+  .btn:hover{
+    background:var(--gold-grad); color:var(--green-950);
+    box-shadow:0 0 26px rgba(22,135,217,0.45);
+    transform:translateY(-1px);
+  }
+  .btn-solid{
+    background:var(--gold-grad); color:var(--green-950); border:2px solid var(--gold-500);
+  }
+  .btn-solid:hover{
+    background:transparent; color:var(--gold-300);
+    box-shadow:0 0 28px rgba(22,135,217,0.5);
+  }
+  .btn .btn-label{position:relative; z-index:3;}
+
+  /* dentes que saltam de dentro do botão no hover */
+  .btn .tooth{
+    position:absolute; top:42%; left:46%;
+    width:15px; height:19px;
+    background:linear-gradient(160deg,#8CCBFF 48%,#0D5FA3);
+    -webkit-mask:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2040'%3E%3Cpath%20d='M16%202C9%202%204%206%204%2014c0%206%202%2010%203%2016%20.6%204%202%208%204%208s2.5-4%203-8c.3-3%201-4%202-4s1.7%201%202%204c.5%204%201%208%203%208s3.4-4%204-8c1-6%203-10%203-16%200-8-5-12-12-12z'/%3E%3C/svg%3E") center/contain no-repeat;
+    mask:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2040'%3E%3Cpath%20d='M16%202C9%202%204%206%204%2014c0%206%202%2010%203%2016%20.6%204%202%208%204%208s2.5-4%203-8c.3-3%201-4%202-4s1.7%201%202%204c.5%204%201%208%203%208s3.4-4%204-8c1-6%203-10%203-16%200-8-5-12-12-12z'/%3E%3C/svg%3E") center/contain no-repeat;
+    opacity:0; z-index:-5;
+    transform:translate(-50%,-50%) scale(.5);
+    pointer-events:none;
+  }
+  .btn:hover .tooth{opacity:1; z-index:2; filter:drop-shadow(1px 0 0 #F7F3E8) drop-shadow(-1px 0 0 #F7F3E8) drop-shadow(0 1px 0 #F7F3E8) drop-shadow(0 -1px 0 #F7F3E8) drop-shadow(0 3px 5px rgba(37,30,23,.28));}
+  .btn .tooth-1{transition:all 1s cubic-bezier(.05,.83,.43,.96);}
+  .btn .tooth-2{transition:all 1s cubic-bezier(0,.4,0,1.01);}
+  .btn .tooth-3{transition:all .9s cubic-bezier(0,.4,0,1.01);}
+  .btn .tooth-4{transition:all .8s cubic-bezier(0,.4,0,1.01);}
+  .btn .tooth-5{transition:all .7s cubic-bezier(0,.4,0,1.01);}
+  .btn .tooth-6{transition:all .8s ease;}
+  .btn:hover .tooth-1{top:-115%; left:6%;  transform:translate(-50%,-50%) rotate(-18deg) scale(1);}
+  .btn:hover .tooth-2{top:-70%;  left:26%; transform:translate(-50%,-50%) rotate(-6deg) scale(1);}
+  .btn:hover .tooth-3{top:-145%; left:50%; transform:translate(-50%,-50%) rotate(3deg) scale(1.05);}
+  .btn:hover .tooth-4{top:-70%;  left:74%; transform:translate(-50%,-50%) rotate(12deg) scale(1);}
+  .btn:hover .tooth-5{top:-115%; left:94%; transform:translate(-50%,-50%) rotate(20deg) scale(1);}
+  .btn:hover .tooth-6{top:135%;  left:50%; transform:translate(-50%,-50%) rotate(-8deg) scale(.9);}
+  .nav-toggle{
+    display:none; background:none; border:none; padding:0;
+    flex:none; width:26px; height:18px;
+    flex-direction:column; justify-content:space-between;
+  }
+  .nav-toggle span{
+    display:block; width:100%; height:2px; border-radius:2px;
+    background:var(--cream-50);
+    transition:transform .28s ease, opacity .18s ease;
+  }
+  .nav-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(8px) rotate(45deg);}
+  .nav-toggle[aria-expanded="true"] span:nth-child(2){opacity:0;}
+  .nav-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-8px) rotate(-45deg);}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    background:
+      radial-gradient(ellipse 80% 60% at 85% 10%, rgba(22,135,217,0.12), transparent),
+      var(--cream-50);
+    color:var(--ink-900);
+    padding:96px 0 110px;
+    position:relative;
+    overflow:hidden;
+  }
+  /* fundo: dot grid com fade radial (CSS puro, custo zero) */
+  .hero::before{
+    content:""; position:absolute; inset:0; z-index:0; pointer-events:none;
+    background-image:radial-gradient(rgba(91,70,54,0.13) 1px, transparent 1.4px);
+    background-size:24px 24px;
+    -webkit-mask-image:radial-gradient(ellipse 75% 65% at 50% 32%, #000 20%, transparent 78%);
+            mask-image:radial-gradient(ellipse 75% 65% at 50% 32%, #000 20%, transparent 78%);
+  }
+  .hero > .container{position:relative; z-index:1;}
+  .hero-grid{
+    display:grid; grid-template-columns:1.1fr 0.9fr; gap:48px; align-items:center;
+  }
+  .hero-eyebrow{
+    color:var(--gold-500); font-weight:600; font-size:0.95rem; margin-bottom:22px; max-width:34ch;
+  }
+  .hero h1{
+    font-size:clamp(2.5rem, 5vw, 4rem);
+    font-weight:600;
+    line-height:1.02;
+    letter-spacing:-0.03em;
+    max-width:15ch;
+    margin-bottom:24px;
+    opacity:0;
+    animation: rise 0.9s ease 0.15s forwards;
+  }
+  .hero p.lead{
+    font-size:1.05rem; max-width:46ch; color:rgba(46,36,29,0.72);
+    margin-bottom:38px;
+    opacity:0;
+    animation: rise 0.9s ease 0.35s forwards;
+  }
+  .hero-ctas{
+    display:flex; gap:16px; flex-wrap:wrap; margin-bottom:48px;
+    opacity:0;
+    animation: rise 0.9s ease 0.5s forwards;
+  }
+  .hero-meta{
+    display:flex; flex-wrap:wrap; gap:14px 24px;
+    font-size:0.86rem; color:rgba(245,240,230,0.72);
+    background:linear-gradient(150deg,var(--green-800),var(--green-950));
+    border:1px solid var(--line-on-dark);
+    border-radius:16px; padding:18px 22px;
+  }
+  .hero-meta a{display:inline-flex; align-items:center; gap:8px; transition:color .2s ease;}
+  .hero-meta a svg{width:16px; height:16px; flex:none; color:var(--gold-300);}
+  .hero-meta a:hover{color:var(--gold-300);}
+
+  @keyframes rise{
+    from{opacity:0; transform:translateY(14px);}
+    to{opacity:1; transform:translateY(0);}
+  }
+
+  /* dentes saindo/voltando sozinhos (só mobile) — pop curto, colado no botão */
+  @keyframes toothOut1{
+    0%,50%,100%{opacity:0; z-index:-5; top:42%; left:46%; transform:translate(-50%,-50%) scale(.45); filter:none;}
+    14%,34%{opacity:1; z-index:2; top:-30%; left:10%; transform:translate(-50%,-50%) rotate(-20deg) scale(.9); filter:drop-shadow(1px 0 0 #F7F3E8) drop-shadow(-1px 0 0 #F7F3E8) drop-shadow(0 1px 0 #F7F3E8) drop-shadow(0 -1px 0 #F7F3E8) drop-shadow(0 3px 5px rgba(37,30,23,.28));}
+  }
+  @keyframes toothOut2{
+    0%,50%,100%{opacity:0; z-index:-5; top:42%; left:46%; transform:translate(-50%,-50%) scale(.45); filter:none;}
+    14%,34%{opacity:1; z-index:2; top:-48%; left:28%; transform:translate(-50%,-50%) rotate(-10deg) scale(.95); filter:drop-shadow(1px 0 0 #F7F3E8) drop-shadow(-1px 0 0 #F7F3E8) drop-shadow(0 1px 0 #F7F3E8) drop-shadow(0 -1px 0 #F7F3E8) drop-shadow(0 3px 5px rgba(37,30,23,.28));}
+  }
+  @keyframes toothOut3{
+    0%,50%,100%{opacity:0; z-index:-5; top:42%; left:46%; transform:translate(-50%,-50%) scale(.45); filter:none;}
+    14%,34%{opacity:1; z-index:2; top:-56%; left:46%; transform:translate(-50%,-50%) rotate(-2deg) scale(1); filter:drop-shadow(1px 0 0 #F7F3E8) drop-shadow(-1px 0 0 #F7F3E8) drop-shadow(0 1px 0 #F7F3E8) drop-shadow(0 -1px 0 #F7F3E8) drop-shadow(0 3px 5px rgba(37,30,23,.28));}
+  }
+  @keyframes toothOut4{
+    0%,50%,100%{opacity:0; z-index:-5; top:42%; left:46%; transform:translate(-50%,-50%) scale(.45); filter:none;}
+    14%,34%{opacity:1; z-index:2; top:-50%; left:64%; transform:translate(-50%,-50%) rotate(8deg) scale(.95); filter:drop-shadow(1px 0 0 #F7F3E8) drop-shadow(-1px 0 0 #F7F3E8) drop-shadow(0 1px 0 #F7F3E8) drop-shadow(0 -1px 0 #F7F3E8) drop-shadow(0 3px 5px rgba(37,30,23,.28));}
+  }
+  @keyframes toothOut5{
+    0%,50%,100%{opacity:0; z-index:-5; top:42%; left:46%; transform:translate(-50%,-50%) scale(.45); filter:none;}
+    14%,34%{opacity:1; z-index:2; top:-34%; left:82%; transform:translate(-50%,-50%) rotate(16deg) scale(.9); filter:drop-shadow(1px 0 0 #F7F3E8) drop-shadow(-1px 0 0 #F7F3E8) drop-shadow(0 1px 0 #F7F3E8) drop-shadow(0 -1px 0 #F7F3E8) drop-shadow(0 3px 5px rgba(37,30,23,.28));}
+  }
+  @keyframes toothOut6{
+    0%,50%,100%{opacity:0; z-index:-5; top:42%; left:46%; transform:translate(-50%,-50%) scale(.45); filter:none;}
+    14%,34%{opacity:1; z-index:2; top:-20%; left:100%; transform:translate(-50%,-50%) rotate(22deg) scale(.8); filter:drop-shadow(1px 0 0 #F7F3E8) drop-shadow(-1px 0 0 #F7F3E8) drop-shadow(0 1px 0 #F7F3E8) drop-shadow(0 -1px 0 #F7F3E8) drop-shadow(0 3px 5px rgba(37,30,23,.28));}
+  }
+
+  .hero-art{
+    position:relative;
+  }
+  .smile-emblem{
+    width:100%; height:auto;
+  }
+
+  /* ---------- Section headings ---------- */
+  .section{padding:96px 0;}
+  .section-head{
+    display:grid; grid-template-columns:1fr 1fr; gap:32px; align-items:end;
+    margin-bottom:56px;
+  }
+  .section-label{
+    font-size:0.9rem; color:var(--green-600); margin-bottom:14px;
+  }
+  .section-head h2{font-size:clamp(1.85rem,3.3vw,2.5rem); max-width:16ch;}
+  #tratamentos .section-head h2,
+  #transformacao .section-head h2,
+  #sobre .section-head h2{
+    color:var(--green-950);
+    background:linear-gradient(96deg, var(--green-600) 0%, var(--green-950) 72%);
+    -webkit-background-clip:text; background-clip:text;
+    -webkit-text-fill-color:transparent;
+  }
+  #sobre .section-head h2{max-width:20ch;}
+  .section-head p{max-width:42ch; color:rgba(46,36,29,0.72); font-size:0.98rem;}
+
+  /* ---------- Quem sou ---------- */
+  .about{
+    background:
+      radial-gradient(ellipse 55% 45% at 12% 18%, rgba(22,135,217,0.16), transparent 70%),
+      radial-gradient(ellipse 50% 55% at 92% 92%, rgba(22,135,217,0.13), transparent 70%),
+      var(--sand-100);
+    color:var(--ink-900);
+  }
+  .about .section-label{color:var(--gold-500);}
+  .about-label{margin-bottom:36px;}
+  .about-body{
+    display:grid; grid-template-columns:330px 1fr; gap:52px; align-items:center;
+  }
+  .about-photo{
+    margin:0; border-radius:22px; overflow:hidden;
+    border:1px solid var(--line-on-light);
+    box-shadow:0 34px 60px -34px rgba(37,30,23,0.5);
+    background:linear-gradient(160deg, var(--cream-50), #E8DFC9);
+  }
+  .about-photo img{
+    display:block; width:100%; aspect-ratio:4/5; object-fit:cover; object-position:50% 16%;
+  }
+  .about-text.glass{
+    padding:34px 36px;
+    border-radius:22px;
+    background:linear-gradient(155deg, rgba(255,255,255,0.55), rgba(255,255,255,0.26));
+    border:1px solid rgba(255,255,255,0.6);
+    box-shadow:0 30px 60px -34px rgba(37,30,23,0.4), inset 0 1px 0 rgba(255,255,255,0.5);
+    -webkit-backdrop-filter:blur(12px) saturate(1.1);
+            backdrop-filter:blur(12px) saturate(1.1);
+  }
+  .about-text p{margin-bottom:16px; color:rgba(46,36,29,0.82); font-size:1.02rem;}
+  .about-text p:last-child{margin-bottom:0;}
+  .about-sign{
+    margin-top:24px;
+    font-size:0.88rem; font-weight:600; letter-spacing:0.01em;
+    color:rgba(46,36,29,0.6);
+  }
+
+  /* ---------- Before / After ---------- */
+  .transform{background:var(--cream-50); color:var(--ink-900);}
+  .transform .section-head p{color:rgba(46,36,29,0.72);}
+  .transform .section-label{color:var(--gold-500);}
+
+  .ba-grid{
+    display:grid; grid-template-columns:repeat(2,1fr); gap:20px;
+  }
+  .ba-item{
+    position:relative; margin:0; overflow:hidden;
+    border:1px solid var(--line-on-light);
+    border-radius:18px;
+    background:linear-gradient(160deg,#173C60,#10263D);
+    box-shadow:0 22px 45px -26px rgba(37,30,23,0.55);
+  }
+  .ba-item img{
+    width:100%; height:100%; object-fit:cover; display:block;
+  }
+  .ba-tag{
+    position:absolute; left:16px; font-size:0.72rem; letter-spacing:0.05em;
+    text-transform:uppercase; color:var(--gold-300);
+    background:rgba(16,38,61,0.55); border:1px solid var(--gold-500);
+    padding:4px 11px; border-radius:999px; backdrop-filter:blur(2px);
+  }
+  .ba-tag-top{top:16px;}
+  .ba-tag-bottom{bottom:16px;}
+  .compare-caption{
+    margin-top:18px; font-size:0.85rem; color:rgba(46,36,29,0.55); text-align:center;
+  }
+  .transform-note{
+    display:flex; gap:28px; margin-top:40px; flex-wrap:wrap;
+    background:linear-gradient(150deg,var(--green-800),var(--green-950));
+    border:1px solid var(--line-on-dark);
+    border-radius:18px; padding:28px 30px;
+  }
+  .transform-note div{font-size:0.88rem; color:rgba(245,240,230,0.78); max-width:26ch;}
+  .transform-note strong{display:block; color:var(--gold-300); font-family:'Bricolage Grotesque',system-ui,sans-serif; font-weight:600; font-size:1.05rem; letter-spacing:-0.01em; margin-bottom:4px;}
+
+  /* ---------- Instagram (vídeo) ---------- */
+  .ig .section-label{color:var(--gold-500);}
+  .ig-panel{
+    display:grid; grid-template-columns:300px 1fr; gap:40px; align-items:center;
+    background:linear-gradient(155deg,var(--green-800),var(--green-950));
+    border:1px solid var(--line-on-dark);
+    border-radius:28px; padding:36px;
+  }
+  .ig-video-wrap{
+    position:relative; border-radius:20px; overflow:hidden;
+    border:1px solid var(--line-on-dark);
+    box-shadow:0 30px 60px -30px rgba(0,0,0,0.7);
+    background:#000;
+  }
+  .ig-video{display:block; width:100%; aspect-ratio:9/16; object-fit:cover;}
+  .ig-copy h3{
+    font-family:'Bricolage Grotesque',system-ui,sans-serif; font-weight:600;
+    font-size:1.4rem; color:var(--cream-50); letter-spacing:-0.015em; margin-bottom:12px;
+  }
+  .ig-copy p{color:rgba(245,240,230,0.75); font-size:0.95rem; margin-bottom:22px; max-width:44ch;}
+  .ig-copy .btn{border-color:var(--gold-500); color:var(--gold-300);}
+  .ig-copy .btn:hover{color:var(--green-950);}
+
+  /* ---------- Tratamentos (carrossel auto) ---------- */
+  .treatments-list{
+    position:relative;
+    margin:0 -28px;
+    padding:64px 0 60px;
+    overflow:hidden;
+    touch-action:pan-y;
+    -webkit-mask:linear-gradient(90deg, transparent, #000 3%, #000 97%, transparent);
+            mask:linear-gradient(90deg, transparent, #000 3%, #000 97%, transparent);
+  }
+  .treatments-track{
+    display:flex; gap:16px; width:max-content;
+    will-change:transform;
+  }
+  .treatment-row{                       /* wrapper 3D + ênfase do carrossel */
+    flex:0 0 var(--card-w, 300px); height:336px;
+    perspective:1200px;
+    transform:scale(0.88);
+    filter:brightness(0.68) saturate(0.8);
+    transition:transform .55s cubic-bezier(.22,1,.36,1), filter .55s ease;
+  }
+  .treatment-row.is-active{ transform:translateY(-30px) scale(1); filter:none; }
+
+  .tcard{
+    display:block; position:relative; height:100%;
+    color:var(--cream-50);
+    border-radius:30px;
+    background:linear-gradient(158deg, #285E89 0%, #173C60 58%, #10263D 100%);
+    border:1px solid var(--line-on-dark);
+    transform-style:preserve-3d;
+    transition:transform .5s ease-in-out, box-shadow .5s ease-in-out;
+    box-shadow:0 22px 45px -22px rgba(0,0,0,0.65);
+  }
+  .tcard::before{                       /* ruído / textura */
+    content:""; position:absolute; inset:0; border-radius:30px; pointer-events:none;
+    background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='c'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23c)' opacity='0.6'/%3E%3C/svg%3E") 0 0/220px 220px;
+    opacity:0.4; mix-blend-mode:overlay;
+  }
+  .tcard::after{                        /* brilho dourado sutil no topo */
+    content:""; position:absolute; inset:0; border-radius:30px; pointer-events:none;
+    background:radial-gradient(120% 70% at 85% -10%, rgba(22,135,217,0.20), transparent 55%);
+  }
+  .treatment-row.is-active .tcard{ transform:rotate3d(1,1,0,10deg); }
+  .tcard:hover{
+    transform:rotate3d(1,1,0,22deg);
+    box-shadow:0 40px 60px -30px rgba(0,0,0,0.7);
+  }
+
+  .tcard-content{ position:relative; padding:124px 30px 0; transform:translate3d(0,0,26px); }
+  .tcard-title{
+    display:block; font-family:'Bricolage Grotesque',system-ui,sans-serif;
+    font-weight:700; font-size:1.35rem; letter-spacing:-0.015em; color:var(--cream-50);
+  }
+  .tcard-text{ display:block; margin-top:12px; font-size:0.9rem; line-height:1.55; color:rgba(245,240,230,0.72); }
+
+  .tcard-cta{
+    position:absolute; left:30px; bottom:26px;
+    display:inline-flex; align-items:center; gap:7px;
+    transform:translate3d(0,0,26px);
+    font-weight:700; font-size:0.8rem; letter-spacing:0.03em; text-transform:uppercase; color:var(--gold-300);
+  }
+  .tcard-cta svg{ width:17px; height:17px; fill:none; stroke:currentColor; stroke-width:2.6; }
+  .tcard:hover .tcard-cta{ color:var(--gold-500); }
+
+  .tcard-logo{ position:absolute; right:0; top:0; transform-style:preserve-3d; }
+  .tcard-logo .tc{
+    position:absolute; top:0; right:0; aspect-ratio:1; border-radius:50%;
+    background:rgba(140,203,255,0.10);
+    border:1px solid rgba(140,203,255,0.16);
+    box-shadow:rgba(0,0,0,0.25) -8px 10px 18px 0;
+    transition:transform .5s ease-in-out;
+  }
+  .tcard-logo .tc1{ width:132px; top:10px; right:10px; transform:translate3d(0,0,20px); }
+  .tcard-logo .tc2{ width:108px; top:14px; right:14px; transform:translate3d(0,0,40px); transition-delay:.15s; }
+  .tcard-logo .tc3{ width:84px;  top:19px; right:19px; transform:translate3d(0,0,60px); transition-delay:.30s; }
+  .tcard-logo .tc4{ width:62px;  top:24px; right:24px; transform:translate3d(0,0,80px); transition-delay:.45s; }
+  .tcard-logo .tc5{
+    width:42px; top:29px; right:29px; transform:translate3d(0,0,100px); transition-delay:.60s;
+    background:var(--gold-500); border-color:var(--gold-500);
+    display:grid; place-content:center;
+  }
+  .tcard-logo .tc5 svg{ width:20px; height:20px; fill:none; stroke:var(--green-950); stroke-width:1.7; }
+  .treatment-row.is-active .tc2, .tcard:hover .tc2{ transform:translate3d(0,0,55px); }
+  .treatment-row.is-active .tc3, .tcard:hover .tc3{ transform:translate3d(0,0,75px); }
+  .treatment-row.is-active .tc4, .tcard:hover .tc4{ transform:translate3d(0,0,95px); }
+  .treatment-row.is-active .tc5, .tcard:hover .tc5{ transform:translate3d(0,0,120px); }
+
+  .see-all{margin-top:20px; display:inline-block; font-size:0.9rem; border-bottom:1px solid var(--gold-500); color:var(--green-800); padding-bottom:3px;}
+
+  /* ---------- Como funciona ---------- */
+  .process{background:var(--white);}
+  .process-grid{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:40px;
+    counter-reset:step;
+  }
+  .step{border-top:1px solid var(--line-on-light); padding-top:22px; position:relative;}
+  .step-num{
+    font-family:'Bricolage Grotesque',system-ui,sans-serif; font-size:2.9rem;
+    display:block; margin-bottom:10px; font-weight:700; line-height:1; letter-spacing:-0.03em;
+    background:linear-gradient(122deg, #8CCBFF 0%, #1687D9 38%, #2478B8 66%, #173C60 100%);
+    -webkit-background-clip:text; background-clip:text;
+    -webkit-text-fill-color:transparent; color:transparent;
+    filter:drop-shadow(0 2px 10px rgba(22,135,217,0.28));
+  }
+  .step h3{font-size:1.2rem; font-weight:600; margin-bottom:8px;}
+  .step p{font-size:0.9rem; color:rgba(46,36,29,0.65);}
+
+  /* ---------- CTA final (painel verde sobre creme) ---------- */
+  .cta-final{
+    background:var(--cream-50); text-align:left; padding:80px 24px;
+  }
+  .cta-final .container{
+    position:relative;
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:32px;
+    background:linear-gradient(155deg,var(--green-800),var(--green-950));
+    color:var(--cream-50);
+    border:1px solid var(--line-on-dark);
+    border-radius:28px; padding:56px 48px;
+  }
+  .cta-final h2{font-size:clamp(1.95rem,3.8vw,2.8rem); max-width:16ch; color:var(--cream-50);}
+  .cta-final p{color:rgba(245,240,230,0.72); margin-top:10px; max-width:38ch;}
+
+  /* ---------- Footer ---------- */
+  footer{background:var(--ink-900); color:rgba(245,240,230,0.7); padding:64px 0 32px; font-size:0.88rem;}
+  .footer-grid{
+    display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:40px;
+    padding-bottom:40px; border-bottom:1px solid rgba(245,240,230,0.14);
+  }
+  .footer-grid h4{color:var(--gold-300); font-family:'Bricolage Grotesque',system-ui,sans-serif; font-weight:600; font-size:1.1rem; letter-spacing:-0.01em; margin-bottom:16px;}
+  .footer-grid ul{list-style:none;}
+  .footer-grid li{margin-bottom:10px;}
+  .footer-grid a:hover{color:var(--gold-300);}
+  .footer-bottom{padding-top:24px; opacity:0.6;}
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:860px){
+    nav{
+      position:absolute; left:0; right:0; top:100%;
+      background:#10263D;                 /* sólido: mesmo motivo do header */
+      border-bottom:1px solid rgba(140,203,255,0.16);
+      box-shadow:0 26px 40px -22px rgba(0,0,0,0.55);
+      clip-path:inset(0 0 100% 0);
+      transition:clip-path .28s ease;
+      pointer-events:none;
+    }
+    nav.open{clip-path:inset(0 0 0 0); pointer-events:auto;}
+    nav ul{
+      flex-direction:column; gap:2px;
+      padding:12px 28px 18px;
+    }
+    nav li{border-bottom:1px solid rgba(140,203,255,0.10);}
+    nav li:last-child{border-bottom:none;}
+    nav a{display:block; padding:13px 0; opacity:0.9; border-bottom:none;}
+    .nav-toggle{display:flex;}
+    header .btn{display:none;}            /* tira o "Agendar" do topo no mobile */
+    .brand-full{display:none;}
+    .brand-short{display:inline;}
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-art{order:-1; max-width:220px; margin:0 auto 12px;}
+    .hero p.lead{display:none;}
+    .hero-meta{flex-direction:column; gap:12px;}
+    .hero-meta a{align-items:flex-start;}
+    .hero-meta a svg{margin-top:3px;}
+    .section-head{grid-template-columns:1fr;}
+    .process-grid{grid-template-columns:1fr; gap:28px;}
+    .footer-grid{grid-template-columns:1fr; gap:28px;}
+    .about-body{grid-template-columns:1fr; gap:24px;}
+    .about-photo{max-width:300px;}
+    .about-text.glass{padding:24px 22px;}
+    .about-label{margin-bottom:26px;}
+    .ba-grid{grid-template-columns:1fr; gap:16px; max-width:420px; margin:0 auto;}
+    .ig-panel{grid-template-columns:1fr; gap:24px; padding:24px; max-width:360px; margin:0 auto;}
+    .ig-video-wrap{max-width:280px; margin:0 auto;}
+    .cta-final .container{flex-direction:column; align-items:flex-start; padding:36px 26px;}
+    .transform-note{padding:22px 22px; gap:20px;}
+
+    /* card menor no mobile */
+    .treatment-row{height:270px;}
+    .tcard{border-radius:26px;}
+    .tcard::before,.tcard::after{border-radius:26px;}
+    .tcard-content{padding:96px 22px 0;}
+    .tcard-title{font-size:1.15rem;}
+    .tcard-text{font-size:0.84rem; margin-top:9px;}
+    .tcard-cta{left:22px; bottom:20px; font-size:0.74rem;}
+    .tcard-logo .tc1{width:104px; top:9px; right:9px;}
+    .tcard-logo .tc2{width:84px;  top:12px; right:12px;}
+    .tcard-logo .tc3{width:66px;  top:16px; right:16px;}
+    .tcard-logo .tc4{width:50px;  top:20px; right:20px;}
+    .tcard-logo .tc5{width:36px;  top:24px; right:24px;}
+    .tcard-logo .tc5 svg{width:17px; height:17px;}
+
+    /* dentes saindo e voltando sozinhos (sem hover no mobile) */
+    .btn .tooth{transition:none;}
+    .btn .tooth-1{animation:toothOut1 3s ease-in-out infinite;}
+    .btn .tooth-2{animation:toothOut2 3s ease-in-out infinite .08s;}
+    .btn .tooth-3{animation:toothOut3 3s ease-in-out infinite .16s;}
+    .btn .tooth-4{animation:toothOut4 3s ease-in-out infinite .24s;}
+    .btn .tooth-5{animation:toothOut5 3s ease-in-out infinite .32s;}
+    .btn .tooth-6{animation:toothOut6 3s ease-in-out infinite .12s;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .hero h1,.hero p.lead,.hero-ctas{animation:none; opacity:1;}
+    .hero-art{animation:none;}
+    .btn .tooth{display:none;}
+  }
+
+  /* ---------- Dentes flutuando nas margens (site inteiro) ---------- */
+  .drift-tooth{
+    position:fixed; z-index:1; width:52px; height:52px;
+    pointer-events:none;
+    border-radius:50%;
+    background:linear-gradient(160deg,#FFFFFF,#F0E6D6);
+    border:2px solid rgba(22,135,217,0.5);
+    box-shadow:0 12px 26px -10px rgba(37,30,23,0.45);
+    display:grid; place-items:center;
+  }
+  .drift-tooth svg{width:56%; height:56%; display:block;}
+  .drift-tooth path{
+    fill:#1687D9;
+    stroke:#0D5FA3; stroke-width:1.4; stroke-linejoin:round;
+  }
+  .drift-tooth.drift-left{
+    left:2vw; top:16vh; transform:translate(-50%,-50%);
+    animation:toothDriftL 30s ease-in-out infinite;
+  }
+  .drift-tooth.drift-right{
+    left:98vw; top:22vh; transform:translate(-50%,-50%);
+    animation:toothDriftR 35s ease-in-out infinite;
+  }
+  @keyframes toothDriftL{
+    0%{   left:2vw;   top:16vh; transform:translate(-50%,-50%) scale(1)    rotate(-4deg);}
+    25%{  left:3.6vw; top:40vh; transform:translate(-50%,-50%) scale(1.12) rotate(9deg);}
+    50%{  left:1.4vw; top:64vh; transform:translate(-50%,-50%) scale(0.9)  rotate(-11deg);}
+    75%{  left:3.6vw; top:84vh; transform:translate(-50%,-50%) scale(1.04) rotate(5deg);}
+    100%{ left:2vw;   top:16vh; transform:translate(-50%,-50%) scale(1)    rotate(-4deg);}
+  }
+  @keyframes toothDriftR{
+    0%{   left:98vw;   top:22vh; transform:translate(-50%,-50%) scale(1)    rotate(4deg);}
+    25%{  left:96.4vw; top:48vh; transform:translate(-50%,-50%) scale(0.9)  rotate(-7deg);}
+    50%{  left:98.6vw; top:70vh; transform:translate(-50%,-50%) scale(1.14) rotate(10deg);}
+    75%{  left:95.9vw; top:88vh; transform:translate(-50%,-50%) scale(0.97) rotate(-4deg);}
+    100%{ left:98vw;   top:22vh; transform:translate(-50%,-50%) scale(1)    rotate(4deg);}
+  }
+  @media (max-width:860px){
+    .drift-tooth{width:38px; height:38px;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .drift-tooth{animation:none;}
+  }
+
+  /* ---------- Cursor dentinho ---------- */
+  body{cursor:var(--cursor-tooth), auto;}
+  a, button, summary, label,
+  .btn, .nav-toggle, .treatment-row, .see-all, .brand,
+  .hero-meta a, .footer-grid a{cursor:var(--cursor-tooth), pointer;}
+
+  /* ---------- Textura + grãos (site inteiro, mobile e desktop) ---------- */
+  body{
+    background-color:var(--cream-50);
+    background-image:
+      radial-gradient(ellipse at 18% 0%, rgba(255,255,255,0.55), transparent 55%),
+      radial-gradient(ellipse at 100% 100%, rgba(22,135,217,0.07), transparent 50%);
+  }
+  /* grão fino de filme, fixo sobre tudo */
+  body::before{
+    content:""; position:fixed; inset:0; z-index:9999; pointer-events:none;
+    opacity:0.66; mix-blend-mode:overlay;
+    background:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.92' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='0.7'/%3E%3C/svg%3E") 0 0 / 120px 120px,
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='g2'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.45' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g2)' opacity='0.5'/%3E%3C/svg%3E") 0 0 / 240px 240px;
+  }
+  /* textura orgânica (manchas suaves) + fibra diagonal */
+  body::after{
+    content:""; position:fixed; inset:0; z-index:9998; pointer-events:none;
+    opacity:0.16; mix-blend-mode:soft-light;
+    background:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='420' height='420'%3E%3Cfilter id='t'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.012 0.02' numOctaves='3' seed='7' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23t)' opacity='0.9'/%3E%3C/svg%3E") 0 0 / 420px 420px,
+      repeating-linear-gradient(48deg, rgba(0,0,0,0.05) 0 1px, transparent 1px 4px);
+  }
+  @media (prefers-reduced-motion: reduce){
+    body::before{opacity:0.45;}
+  }
+
+  /* ---------- Imagens ---------- */
+  @keyframes heroFloat{
+    0%,100%{transform:translateY(0) rotate(-1.6deg);}
+    50%{transform:translateY(-16px) rotate(1.6deg);}
+  }
+  .hero-art{
+    position:relative; display:flex; justify-content:center; perspective:900px;
+    animation:heroFloat 7s ease-in-out infinite;
+    will-change:transform;
+  }
+  .hero-art::before{
+    content:""; position:absolute; z-index:0;
+    width:88%; aspect-ratio:1; border-radius:50%;
+    top:5%; left:50%; transform:translateX(calc(-50% + var(--prx,0px)));
+    border:1px solid var(--gold-500);
+    background:radial-gradient(circle at 50% 42%, rgba(22,135,217,0.20), transparent 62%);
+    transition:transform .3s ease-out;
+  }
+  .hero-photo{
+    position:relative; z-index:1;
+    width:100%; height:auto;
+    border-radius:22px;
+    will-change:transform;
+    box-shadow:0 40px 70px -40px rgba(37,30,23,0.5);
+  }
+  @media (max-width:860px){
+    .hero-art{max-width:280px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="drift-tooth drift-left" aria-hidden="true">
+  <svg viewBox="0 0 32 40"><path d="M16 2C9 2 4 6 4 14c0 6 2 10 3 16 .6 4 2 8 4 8s2.5-4 3-8c.3-3 1-4 2-4s1.7 1 2 4c.5 4 1 8 3 8s3.4-4 4-8c1-6 3-10 3-16 0-8-5-12-12-12z"/></svg>
+</div>
+<div class="drift-tooth drift-right" aria-hidden="true">
+  <svg viewBox="0 0 32 40"><path d="M16 2C9 2 4 6 4 14c0 6 2 10 3 16 .6 4 2 8 4 8s2.5-4 3-8c.3-3 1-4 2-4s1.7 1 2 4c.5 4 1 8 3 8s3.4-4 4-8c1-6 3-10 3-16 0-8-5-12-12-12z"/></svg>
+</div>
+
+<header>
+  <div class="container nav-row">
+    <a href="#" class="brand">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-full">Dr. Matheus César</span>
+      <span class="brand-short">Matheus César</span>
+    </a>
+    <nav id="site-nav">
+      <ul>
+        <li><a href="#inicio">Início</a></li>
+        <li><a href="#sobre">Quem sou</a></li>
+        <li><a href="#tratamentos">Tratamentos</a></li>
+        <li><a href="#transformacao">Facetas</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn-solid" href="https://wa.me/5598984011632?text=Ol%C3%A1%21%20Quero%20conhecer%20o%20trabalho%20do%20Dr.%20Matheus%20C%C3%A9sar." target="_blank" rel="noopener"><span class="btn-label">Conheça meu trabalho</span></a>
+    <button class="nav-toggle" aria-label="Abrir menu" aria-controls="site-nav" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<section class="hero" id="inicio">
+  <div class="container hero-grid">
+    <div>
+      <p class="hero-eyebrow">Cirurgião-dentista · CRO-MA 10485</p>
+      <h1>Transformo seu sorriso com naturalidade em porcelana</h1>
+      <p class="lead">Um planejamento personalizado para transformar o seu sorriso com estética, segurança e naturalidade.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-solid" href="https://wa.me/5598984011632?text=Ol%C3%A1%21%20Quero%20conhecer%20o%20trabalho%20do%20Dr.%20Matheus%20C%C3%A9sar." target="_blank" rel="noopener"><span class="btn-label">Conheça meu trabalho</span><i class="tooth tooth-1"></i><i class="tooth tooth-2"></i><i class="tooth tooth-3"></i><i class="tooth tooth-4"></i><i class="tooth tooth-5"></i><i class="tooth tooth-6"></i></a>
+        <a class="btn" href="#transformacao"><span class="btn-label">Ver transformação</span></a>
+      </div>
+      <div class="hero-meta">
+        <a href="https://wa.me/5598984011632?text=Ol%C3%A1%21%20Quero%20saber%20mais%20sobre%20consultas%20e%20cursos." target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.3 7-12a7 7 0 1 0-14 0c0 5.7 7 12 7 12z"/><circle cx="12" cy="9" r="2.6"/></svg>
+          Consultas e cursos
+        </a>
+        <a href="https://www.instagram.com/dr.matheuscesar/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg>
+          @dr.matheuscesar
+        </a>
+        <a href="https://wa.me/5598984011632?text=Ol%C3%A1%21%20Quero%20saber%20mais%20sobre%20consultas%20e%20cursos." target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.86 9.86 0 0 0 4.79 1.22c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm0 18.15c-1.53 0-3.03-.41-4.34-1.19l-.31-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.36c0-4.54 3.7-8.24 8.24-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.69 8.24-8.24 8.24zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.16.25-.64.81-.79.98-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.16.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42h-.47c-.16 0-.43.06-.66.31-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.56.12.16 1.75 2.67 4.25 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29z"/></svg>
+          +500 alunos
+        </a>
+      </div>
+    </div>
+    <div class="hero-art">
+       <img class="hero-photo" src="assets/matheus-editado.png?v=3"
+            alt="Retrato do Dr. Matheus César"
+           width="1080" height="1080" fetchpriority="high">
+    </div>
+  </div>
+</section>
+
+<section class="section about" id="sobre">
+  <div class="container">
+    <p class="section-label about-label">Quem sou</p>
+
+    <div class="about-body">
+      <figure class="about-photo">
+         <img src="assets/matheus-editado.png?v=3" alt="Dr. Matheus César" loading="lazy">
+      </figure>
+      <div class="about-text glass">
+        <p>Sou o Matheus, cirurgião-dentista apaixonado por transformar sorrisos com naturalidade e precisão.</p>
+        <p>Meu trabalho une planejamento, estética e função para criar resultados em porcelana que respeitam a identidade de cada paciente.</p>
+        <p class="about-sign">Dr. Matheus César · CRO-MA 10485</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section transform" id="transformacao">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <p class="section-label">Resultado real</p>
+        <h2>Uma transformação de sorriso, feita com porcelana</h2>
+      </div>
+    </div>
+
+    <div class="ba-grid">
+      <figure class="ba-item">
+        <img src="assets/ANTES%20E%20DEPOIS.jpeg" alt="Antes e depois de tratamento com porcelana" loading="lazy">
+        <span class="ba-tag ba-tag-top">Antes</span>
+        <span class="ba-tag ba-tag-bottom">Depois</span>
+      </figure>
+      <figure class="ba-item">
+        <img src="assets/ANTES%20E%20DEPOIS%202.jpeg" alt="Antes e depois de transformação do sorriso" loading="lazy">
+        <span class="ba-tag ba-tag-top">Antes</span>
+        <span class="ba-tag ba-tag-bottom">Depois</span>
+      </figure>
+    </div>
+    <p class="compare-caption">Casos reais · cada resultado é planejado individualmente</p>
+
+    <div class="transform-note">
+      <div><strong>Planejamento</strong>Plano de tratamento individualizado, caso a caso.</div>
+      <div><strong>Abordagem</strong>Estética, função e naturalidade caminhando juntas.</div>
+      <div><a href="https://wa.me/5598984011632?text=Ol%C3%A1%21%20Quero%20saber%20mais%20sobre%20consultas%20e%20cursos." target="_blank" rel="noopener"><strong>Para você</strong>Consultas, cursos e conteúdos para transformar sorrisos.</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="tratamentos">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <p class="section-label">Tratamentos</p>
+        <h2>Como podemos cuidar do seu sorriso</h2>
+      </div>
+      <p>Da estética do sorriso à porcelana, sempre com planejamento completo antes de qualquer decisão.</p>
+    </div>
+
+    <div class="treatments-list">
+     <div class="treatments-track">
+
+      <div class="treatment-row">
+        <a class="tcard" href="https://wa.me/5598984011632?text=Ol%C3%A1%21%20Tenho%20interesse%20neste%20tratamento." target="_blank" rel="noopener">
+          <div class="tcard-content">
+          <span class="tcard-title">Porcelana estética</span>
+          <span class="tcard-text">Cor, formato e proporção planejados para um sorriso equilibrado.</span>
+          </div>
+          <span class="tcard-cta">Saiba mais <svg viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span>
+          <div class="tcard-logo">
+            <span class="tc tc1"></span><span class="tc tc2"></span><span class="tc tc3"></span><span class="tc tc4"></span>
+            <span class="tc tc5"><svg viewBox="0 0 24 24"><path d="M12 3l2.5 4.5L19 9l-3 3.5.7 5-4.7-2.5L7.3 17.5l.7-5L5 9l4.5-1.5z" stroke-linejoin="round"/></svg></span>
+          </div>
+        </a>
+      </div>
+
+      <div class="treatment-row">
+        <a class="tcard" href="https://wa.me/5598984011632?text=Ol%C3%A1%21%20Tenho%20interesse%20neste%20tratamento." target="_blank" rel="noopener">
+          <div class="tcard-content">
+          <span class="tcard-title">Lentes de contato</span>
+          <span class="tcard-text">Cerâmica ultrafina para transformar o sorriso com naturalidade.</span>
+          </div>
+          <span class="tcard-cta">Saiba mais <svg viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span>
+          <div class="tcard-logo">
+            <span class="tc tc1"></span><span class="tc tc2"></span><span class="tc tc3"></span><span class="tc tc4"></span>
+            <span class="tc tc5"><svg viewBox="0 0 24 24"><path d="M12 2l3 5-3 3-3-3z"/><path d="M9 10l3 12 3-12"/></svg></span>
+          </div>
+        </a>
+      </div>
+
+      <div class="treatment-row">
+        <a class="tcard" href="https://wa.me/5598984011632?text=Ol%C3%A1%21%20Tenho%20interesse%20neste%20tratamento." target="_blank" rel="noopener">
+          <div class="tcard-content">
+          <span class="tcard-title">Clareamento dental</span>
+            <span class="tcard-text">Dentes mais claros, com segurança e sem sensibilidade.</span>
+          </div>
+          <span class="tcard-cta">Saiba mais <svg viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span>
+          <div class="tcard-logo">
+            <span class="tc tc1"></span><span class="tc tc2"></span><span class="tc tc3"></span><span class="tc tc4"></span>
+            <span class="tc tc5"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M5.6 18.4L7 17M17 7l1.4-1.4"/></svg></span>
+          </div>
+        </a>
+      </div>
+
+      <div class="treatment-row">
+        <a class="tcard" href="https://wa.me/5598984011632?text=Ol%C3%A1%21%20Tenho%20interesse%20neste%20tratamento." target="_blank" rel="noopener">
+          <div class="tcard-content">
+          <span class="tcard-title">Reabilitação estética</span>
+          <span class="tcard-text">Planejamento restaurador para devolver harmonia, função e confiança.</span>
+          </div>
+          <span class="tcard-cta">Saiba mais <svg viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span>
+          <div class="tcard-logo">
+            <span class="tc tc1"></span><span class="tc tc2"></span><span class="tc tc3"></span><span class="tc tc4"></span>
+            <span class="tc tc5"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M9 10h.01M15 10h.01M8.8 14.5c1.6 1.6 4.8 1.6 6.4 0" stroke-linecap="round"/></svg></span>
+          </div>
+        </a>
+      </div>
+
+      <div class="treatment-row">
+        <a class="tcard" href="https://wa.me/5598984011632?text=Ol%C3%A1%21%20Tenho%20interesse%20neste%20tratamento." target="_blank" rel="noopener">
+          <div class="tcard-content">
+          <span class="tcard-title">Diagnóstico personalizado</span>
+          <span class="tcard-text">Uma avaliação completa antes de qualquer decisão sobre o seu sorriso.</span>
+          </div>
+          <span class="tcard-cta">Saiba mais <svg viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span>
+          <div class="tcard-logo">
+            <span class="tc tc1"></span><span class="tc tc2"></span><span class="tc tc3"></span><span class="tc tc4"></span>
+            <span class="tc tc5"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/></svg></span>
+          </div>
+        </a>
+      </div>
+
+      <div class="treatment-row">
+        <a class="tcard" href="https://wa.me/5598984011632?text=Ol%C3%A1%21%20Tenho%20interesse%20neste%20tratamento." target="_blank" rel="noopener">
+          <div class="tcard-content">
+          <span class="tcard-title">Restauração e dentística</span>
+          <span class="tcard-text">Reconstruções estéticas para recuperar forma, função e segurança.</span>
+          </div>
+          <span class="tcard-cta">Saiba mais <svg viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span>
+          <div class="tcard-logo">
+            <span class="tc tc1"></span><span class="tc tc2"></span><span class="tc tc3"></span><span class="tc tc4"></span>
+            <span class="tc tc5"><svg viewBox="0 0 24 24"><path d="M6 3v18M6 3h9a3 3 0 010 6H6"/></svg></span>
+          </div>
+        </a>
+      </div>
+
+     </div>
+    </div>
+
+    <a class="see-all" href="#contato">Ver todos os tratamentos</a>
+  </div>
+</section>
+
+<section class="section process">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <p class="section-label">Como funciona</p>
+        <h2>Simples, do primeiro contato ao sorriso</h2>
+      </div>
+      <p></p>
+    </div>
+
+    <div class="process-grid">
+      <div class="step">
+        <span class="step-num">1</span>
+        <h3>Contato</h3>
+        <p>Você acessa o link da bio e entra em contato para saber mais sobre consultas e cursos.</p>
+      </div>
+      <div class="step">
+        <span class="step-num">2</span>
+        <h3>Consulta de avaliação</h3>
+        <p>Exame cuidadoso, diagnóstico claro e um plano de tratamento individualizado.</p>
+      </div>
+      <div class="step">
+        <span class="step-num">3</span>
+        <h3>Tratamento</h3>
+        <p>Tratamento personalizado, com foco em naturalidade, conforto e longevidade.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section ig" id="instagram">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <p class="section-label">No Instagram</p>
+        <h2>Conteúdo e bastidores do consultório</h2>
+      </div>
+      <p>Dicas, casos e bastidores do trabalho do Dr. Matheus. Acompanhe em <a href="https://www.instagram.com/dr.matheuscesar/" target="_blank" rel="noopener">@dr.matheuscesar</a>.</p>
+    </div>
+
+    <div class="ig-panel">
+      <div class="ig-video-wrap">
+        <video class="ig-video" autoplay muted loop playsinline controls preload="metadata"
+               poster="assets/ANTES%20E%20DEPOIS.jpeg">
+          <source src="assets/instagram-reel.mp4" type="video/mp4">
+          Seu navegador não reproduz este vídeo.
+        </video>
+      </div>
+      <div class="ig-copy">
+        <h3>Conteúdo para transformar o seu sorriso</h3>
+        <p>Conheça os casos, os bastidores e a filosofia de trabalho do Dr. Matheus no Instagram.</p>
+        <a class="btn" href="https://www.instagram.com/dr.matheuscesar/" target="_blank" rel="noopener"><span class="btn-label">Ver no Instagram</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-final" id="contato">
+  <div class="container">
+    <div>
+      <h2>Vamos transformar o seu sorriso?</h2>
+      <p>Conheça o trabalho do Dr. Matheus e descubra o que a porcelana pode fazer pelo seu sorriso.</p>
+    </div>
+    <a class="btn btn-solid" href="https://wa.me/5598984011632?text=Ol%C3%A1%21%20Quero%20agendar%20uma%20consulta%20com%20o%20Dr.%20Matheus%20C%C3%A9sar." target="_blank" rel="noopener"><span class="btn-label">Falar pelo WhatsApp</span><i class="tooth tooth-1"></i><i class="tooth tooth-2"></i><i class="tooth tooth-3"></i><i class="tooth tooth-4"></i><i class="tooth tooth-5"></i><i class="tooth tooth-6"></i></a>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4>Dr. Matheus César</h4>
+        <p>Cirurgião-Dentista · Sorrisos em porcelana</p>
+        <p style="margin-top:6px;">CRO-MA 10485</p>
+        <p style="margin-top:14px;"><a href="https://wa.me/5598984011632?text=Ol%C3%A1%21%20Quero%20saber%20mais%20sobre%20consultas%20e%20cursos." target="_blank" rel="noopener">Consultas, cursos e conteúdos</a></p>
+      </div>
+      <div>
+        <h4>Tratamentos</h4>
+        <ul>
+          <li><a href="#transformacao">Porcelana estética</a></li>
+          <li><a href="#tratamentos">Lentes de contato</a></li>
+          <li><a href="#tratamentos">Clareamento dental</a></li>
+          <li><a href="#tratamentos">Reabilitação estética</a></li>
+          <li><a href="#contato">Avaliação completa</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contato</h4>
+        <ul>
+          <li><a href="https://wa.me/5598984011632" target="_blank" rel="noopener">WhatsApp +55 98 98401-1632</a></li>
+          <li><a href="https://www.instagram.com/dr.matheuscesar/" target="_blank" rel="noopener">Instagram @dr.matheuscesar</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="footer-bottom">© 2026 Dr. Matheus César. Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+<script>
+  const navToggle = document.querySelector('.nav-toggle');
+  const siteNav = document.querySelector('#site-nav');
+  const setNav = (open) => {
+    siteNav.classList.toggle('open', open);
+    navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    navToggle.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
+  };
+  navToggle.addEventListener('click', () => setNav(!siteNav.classList.contains('open')));
+  siteNav.addEventListener('click', (e) => { if (e.target.closest('a')) setNav(false); });
+  window.addEventListener('resize', () => { if (window.innerWidth > 860) setNav(false); });
+
+  /* ---------- Carrossel de tratamentos (marquee + card em ênfase + arraste) ---------- */
+  (function () {
+    const wrap = document.querySelector('.treatments-list');
+    const track = wrap && wrap.querySelector('.treatments-track');
+    if (!track) return;
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // duplica a sequência de cards para um loop contínuo e sem emenda
+    const n = track.children.length;
+    Array.from(track.children).forEach(node => track.appendChild(node.cloneNode(true)));
+
+    const GAP = 16;
+    let loop = 0;
+    const layout = () => {
+      const w = wrap.clientWidth;
+      let cardW;
+      if (w < 620) {
+        cardW = Math.round(w * 0.7);                       // mobile: card menor, com "espiada" no próximo
+      } else {
+        const per = w < 960 ? 2 : 3;                       // cards visíveis
+        cardW = Math.round((w - (per - 1) * GAP) / per);
+      }
+      wrap.style.setProperty('--card-w', cardW + 'px');
+      // distância exata de um ciclo (do 1º card ao seu clone)
+      loop = track.children[n].offsetLeft - track.children[0].offsetLeft;
+    };
+    layout();
+    window.addEventListener('resize', layout);
+    window.addEventListener('load', layout);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(layout);
+
+    const SPEED = 0.18;
+    let pos = 0, paused = false, resumeTimer;
+    let dragging = false, lastX = 0;
+
+    const resumeSoon = () => {
+      clearTimeout(resumeTimer);
+      resumeTimer = setTimeout(() => { paused = false; }, 1500);
+    };
+
+    wrap.addEventListener('pointerenter', () => { paused = true; });
+    wrap.addEventListener('pointerleave', () => { if (!dragging) paused = false; });
+
+    let moved = 0;
+    wrap.addEventListener('pointerdown', e => {
+      if (e.button != null && e.button !== 0) return;
+      dragging = true; paused = true; lastX = e.clientX; moved = 0;
+    });
+    window.addEventListener('pointermove', e => {
+      if (!dragging) return;
+      const dx = e.clientX - lastX;
+      pos -= dx; lastX = e.clientX; moved += Math.abs(dx);
+    });
+    window.addEventListener('pointerup', () => {
+      if (!dragging) return;
+      dragging = false; resumeSoon();
+    });
+    // se houve arraste, cancela o clique no card (não abre o WhatsApp)
+    wrap.addEventListener('click', e => {
+      if (moved > 6) { e.preventDefault(); e.stopPropagation(); }
+    }, true);
+
+    wrap.addEventListener('wheel', e => {
+      // só reage a rolagem horizontal; rolagem vertical = página, ignora
+      if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return;
+      pos += e.deltaX;
+      paused = true; resumeSoon();
+    }, { passive: true });
+
+    let activeEl = null;
+    function frame() {
+      if (!paused && !reduce) pos += SPEED;
+      if (loop > 0) pos = ((pos % loop) + loop) % loop;
+      track.style.transform = 'translate3d(' + (-pos).toFixed(2) + 'px,0,0)';
+
+      const center = wrap.getBoundingClientRect().left + wrap.clientWidth / 2;
+      let best = null, bestD = Infinity;
+      for (const card of track.children) {
+        const r = card.getBoundingClientRect();
+        const d = Math.abs(r.left + r.width / 2 - center);
+        if (d < bestD) { bestD = d; best = card; }
+      }
+      if (best !== activeEl) {
+        if (activeEl) activeEl.classList.remove('is-active');
+        if (best) best.classList.add('is-active');
+        activeEl = best;
+      }
+      requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  })();
+
+  /* ---------- Foto do hero reage ao cursor (parallax + tilt) ---------- */
+  (function () {
+    const hero = document.querySelector('.hero');
+    const art = document.querySelector('.hero-art');
+    const photo = document.querySelector('.hero-photo');
+    if (!hero || !photo) return;
+    if (window.matchMedia('(hover: none)').matches) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    let tx = 0, ty = 0, cx = 0, cy = 0, raf = 0;
+
+    const kick = () => { if (!raf) raf = requestAnimationFrame(loop); };
+    hero.addEventListener('pointermove', e => {
+      const r = hero.getBoundingClientRect();
+      tx = ((e.clientX - r.left) / r.width - 0.5) * 2;
+      ty = ((e.clientY - r.top) / r.height - 0.5) * 2;
+      kick();
+    });
+    hero.addEventListener('pointerleave', () => { tx = 0; ty = 0; kick(); });
+
+    function loop() {
+      cx += (tx - cx) * 0.09;
+      cy += (ty - cy) * 0.09;
+      photo.style.transform =
+        'rotateX(' + (-cy * 4).toFixed(2) + 'deg) rotateY(' + (cx * 7).toFixed(2) +
+        'deg) translate3d(' + (cx * 12).toFixed(1) + 'px,' + (cy * 9).toFixed(1) + 'px,0)';
+      if (art) art.style.setProperty('--prx', (cx * -16).toFixed(1) + 'px');
+      if (Math.abs(tx - cx) > 0.0015 || Math.abs(ty - cy) > 0.0015) {
+        raf = requestAnimationFrame(loop);
+      } else {
+        raf = 0;
+      }
+    }
+  })();
+
+  /* ---------- Tilt genérico ao passar o cursor ---------- */
+  (function () {
+    if (window.matchMedia('(hover: none)').matches) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    function tilt(ref, target, rot, mov) {
+      let tx = 0, ty = 0, cx = 0, cy = 0, raf = 0;
+      const kick = () => { if (!raf) raf = requestAnimationFrame(loop); };
+      ref.addEventListener('pointermove', e => {
+        const r = ref.getBoundingClientRect();
+        tx = ((e.clientX - r.left) / r.width - 0.5) * 2;
+        ty = ((e.clientY - r.top) / r.height - 0.5) * 2;
+        kick();
+      });
+      ref.addEventListener('pointerleave', () => { tx = 0; ty = 0; kick(); });
+      target.style.willChange = 'transform';
+      function loop() {
+        cx += (tx - cx) * 0.09;
+        cy += (ty - cy) * 0.09;
+        target.style.transform =
+          'perspective(800px) rotateX(' + (-cy * rot).toFixed(2) + 'deg) rotateY(' + (cx * rot).toFixed(2) +
+          'deg) translate3d(' + (cx * mov).toFixed(1) + 'px,' + (cy * mov).toFixed(1) + 'px,0)';
+        if (Math.abs(tx - cx) > 0.0015 || Math.abs(ty - cy) > 0.0015) raf = requestAnimationFrame(loop);
+        else raf = 0;
+      }
+    }
+
+    const aboutBody = document.querySelector('.about-body');
+    const aboutPhoto = document.querySelector('.about-photo');
+    if (aboutBody && aboutPhoto) tilt(aboutBody, aboutPhoto, 6, 9);
+
+    const ctaBox = document.querySelector('.cta-final .container');
+    if (ctaBox) tilt(ctaBox, ctaBox, 3.2, 4);
+  })();
+</script>
+
+</body>
+</html>
